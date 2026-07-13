@@ -1,0 +1,17 @@
+Laboratory 1a - Analysis Report
+
+1. Parameter Added:
+NETWORK_SCAN_PORT_THRESHOLD
+
+2. Configured Value:
+4
+
+3. Event that triggered a finding (Met the threshold of 4 ports):
+2026-07-13 19:50:00 - Network scan detected from IP 10.0.0.5 scanning the following ports: 22, 80,50,61
+
+4. Event that did NOT trigger a finding (Below the threshold with only 3 ports):
+2026-07-13 19:50:00 - Network scan detected from IP 10.0.0.5 scanning the following ports: 22, 80,50
+
+5. Impact on False Positives and False Negatives:
+- Raising the threshold reduces False Positives (FP) because the detector will ignore minor network noise, accidental port hits, or very small routine scans. However, it increases the risk of False Negatives (FN), meaning a real attacker conducting a "low and slow" stealthy scan on only a few specific ports might go completely undetected.
+- Lowering the threshold decreases False Negatives (FN) because the detector becomes highly sensitive and catches everything, but it significantly increases False Positives (FP) by raising false alarms for legitimate network traffic.
